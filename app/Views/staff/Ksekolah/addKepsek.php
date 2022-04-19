@@ -10,7 +10,7 @@
 <section class="section">
     <div class="section-header">
         <div class="section-header-back">
-            <a href="/kepsek" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
+            <a href="/staff/Ksekolah" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Create data kepsek</h1>
     </div>
@@ -22,13 +22,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" class="float-right">
-                        <a href="/kepsek/new">
-                            <h4> Input data kepsek </h4>
+                        <a href="/staff/Ksekolah/new">
+                            <h4> Input data kepsek
+                            </h4>
                         </a>
+                        <code><?= session()->roleUser ?></code>
                     </div>
                     <div class="card-body">
 
-                        <form action="/kepsek/create" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <form action="/staff/Ksekolah/create" method="post" autocomplete="off" enctype="multipart/form-data">
                             <?= csrf_field() ?>
 
                             <div class="form-row">

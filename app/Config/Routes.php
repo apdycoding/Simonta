@@ -101,6 +101,7 @@ $routes->presenter('admin/Reportdoa', ['filter' => 'auth']);
 // routes bagian staff || role staff
 $routes->presenter('staff/Santristaff', ['filter' => 'auth']);
 $routes->presenter('staff/guru', ['filter' => 'auth']);
+$routes->presenter('staff/Ksekolah', ['filter' => 'auth']);
 
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);

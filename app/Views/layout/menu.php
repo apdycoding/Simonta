@@ -154,7 +154,7 @@
     <ul class="dropdown-menu"> -->
     <li class="menu-header">Master Data <code> <?= session()->roleUser ?> </code></li>
 
-    <li>
+    <li <?= current_url(true)->getSegment(2) == 'Ksekolah' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/Ksekolah"><i class="fa fa-user"></i> <span>Kep. Sekolah</span></a>
     </li>
     <li <?= current_url(true)->getSegment(2) == 'guru' ? 'class="active"' : '' ?>>
@@ -163,7 +163,7 @@
     <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/Santristaff"><i class="fa fa-users"></i> <span>Santri Active </span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(3) == 'inactive' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/Santristaff/inactive"><i class="fa fa-user-alt-slash"></i> <span>Santri inActive</span></a>
     </li>
 

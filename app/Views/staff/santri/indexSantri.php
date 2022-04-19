@@ -81,7 +81,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped" id="table-1">
+                            <table class="table table-striped table-md" id="table-1">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -139,12 +139,12 @@
 
                                                     <a href="/staff/Santristaff/edit/<?= $s['santri_id']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
 
-                                                    <!-- <form action="/staff/santri/<?= $s['santri_id']; ?>" method="POST" class="d-inline" id="del-<?= $s['santri_id']; ?>">
+                                                    <form action="/staff/Santristaff/delete/<?= $s['santri_id']; ?>" method="POST" class="d-inline" id="del-<?= $s['santri_id']; ?>">
                                                         <?= csrf_field(); ?>
                                                         <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data santri akan dihapus?" data-confirm-yes="submitDel(<?= $s['santri_id']; ?>)"><i class="fa fa-trash"></i>
                                                             Delete
                                                         </button>
-                                                    </form> -->
+                                                    </form>
 
                                                 </center>
                                             </td>

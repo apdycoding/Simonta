@@ -467,6 +467,6 @@ class Santristaff extends ResourceController
 
     public function delete($id = null)
     {
-        // 
+        dd($id);
     }
 }

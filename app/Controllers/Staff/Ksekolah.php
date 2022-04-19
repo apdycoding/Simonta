@@ -3,76 +3,65 @@
 namespace App\Controllers\Staff;
 
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\KepsekModel;
 
 class Ksekolah extends ResourceController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
-    public function index()
+    function __construct()
     {
-        //
+        $this->KepsekModel = new KepsekModel();
+        if (session()->roleUser != 'staff') {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Maaf page tidak ditemukan di page staff');
+        }
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
+    public function index()
+    {
+        $keyword = $this->request->getGet('keyword');
+        $data = $this->KepsekModel->getPaginateKepsek(3, $keyword);
+        return view('staff/ksekolah/indexs', $data);
+    }
+
     public function show($id = null)
     {
         //
     }
 
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
     public function new()
     {
-        //
+        return view('staff/ksekolah/addKepsek');
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
-        //
+        $data = $this->request->getVar();
+        // dd($data);
+        $this->KepsekModel->save($data);
+        return redirect()->to('/staff/Ksekolah')->with('succes', 'Data kepsek ' . '<code>' . $this->request->getVar('name_kepsek') . '</code>' . ' berhasil disimpan');
     }
 
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
     public function edit($id = null)
     {
-        //
+        $data['edit'] = $this->KepsekModel->where('kepsek_id', $id)->first();
+
+        if (empty($data['edit'])) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        return view('staff/Ksekolah/editKepsek', $data);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getVar();
+        $this->KepsekModel->update($id, $data);
+        return redirect()->to('/staff/Ksekolah')->with('warning', 'Data kepsek ' . '<code>' . $this->request->getVar('name_kepsek') . '</code>' . ' berhasil diupdate');
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
-        //
+        $data = $this->KepsekModel->where('kepsek_id', $id)->first();
+        // dd($data['name_kepsek']);
+        $this->KepsekModel->delete($id);
+        return redirect()->to('/staff/Ksekolah')->with('error', 'Data kepsek ' . '<code>' . $data['name_kepsek'] . '</code>' . ' berhasil dihapus');
     }
 }

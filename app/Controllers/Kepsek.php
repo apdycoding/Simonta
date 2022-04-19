@@ -19,31 +19,17 @@ class Kepsek extends ResourceController
         return view('admin/kepsek/indexKepsek', $data);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
+
     public function show($id = null)
     {
         //
     }
 
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
     public function new()
     {
         return view('admin/kepsek/addKepsek');
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $data = $this->request->getVar();
