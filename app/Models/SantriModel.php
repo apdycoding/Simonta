@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class SantriModel extends Model
+{
+    protected $DBGroup          = 'default';
+    protected $table            = 'santri';
+    protected $primaryKey       = 'santri_id';
+    protected $useAutoIncrement = true;
+    protected $insertID         = 0;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
+    protected $protectFields    = true;
+    protected $allowedFields    = ['nik_santri', 'name_santri', 'gender', 'agama', 'alamat', 'tgl_lahir', 'tempat_lhr', 'photos', 'statusSantri', 'nik_ibu', 'nama_ibu', 'pekerjaan_ibu', 'status_ibu', 'phoneIbu', 'nik_ayah', 'nama_ayah', 'pekerjaan_ayah', 'status_ayah', 'phoneAyah'];
+
+    // Dates
+    protected $useTimestamps = true;
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    protected $deletedField  = 'deleted_at';
+
+    // Validation
+    protected $validationRules      = [];
+    protected $validationMessages   = [];
+    protected $skipValidation       = false;
+    protected $cleanValidationRules = true;
+
+    // Callbacks
+    protected $allowCallbacks = true;
+    protected $beforeInsert   = [];
+    protected $afterInsert    = [];
+    protected $beforeUpdate   = [];
+    protected $afterUpdate    = [];
+    protected $beforeFind     = [];
+    protected $afterFind      = [];
+    protected $beforeDelete   = [];
+    protected $afterDelete    = [];
+
+    public function getSantri($santriId = false)
+    {
+        // jika slug kosong tampilkan semua
+        if ($santriId == false) {
+            return $this->where('statusSantri', '1')
+                ->orderBy('name_santri', 'asc')
+                ->findAll();
+        }
+
+        // jika ada slug tampilkan yang dibawah
+        return $this->where(['santri_id' => $santriId])->first();
+    }
+
+    public function inActive()
+    {
+        return $this->where('statusSantri', '0')
+            ->orderBy('name_santri', 'asc')->findAll();
+    }
+
+    public function getName($id = null)
+    {
+        $builder = $this->db->table('santri');
+        $builder->select('santri_id, name_santri');
+
+        // jika ada idnya
+        if ($id != null) {
+            $builder->where('santri_id', $id);
+        }
+
+        $builder->where('statusSantri', '1');
+        $builder->orderBy('name_santri', 'asc');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
+    // total santri 
+    // countAll menghitung seluruh baris 
+    // dan countAllResult untuk menghitung berdasarkan baris where
+    public function SantriInActive()
+    {
+        $builder = $this->builder();
+        $builder->like('statusSantri', '0');
+        $query = $builder->countAllResults();
+        return $query;
+    }
+
+    public function SantriActive()
+    {
+        $builder = $this->builder();
+        $builder->like('statusSantri', '1');
+        $query = $builder->countAllResults();
+        return $query;
+    }
+}
