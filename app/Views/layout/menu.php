@@ -138,7 +138,7 @@
 <!-- MENU STAFF -->
 <?php if (session('roleUser') == 'staff') : ?>
 
-    <!-- <?= current_url(true)->getSegment(1) == 'home' ? true : false ?> -->
+    <!-- <?= current_url(true)->getSegment(1) ?> -->
 
     <li class="menu-header">Main Menu</li>
     <li <?= current_url(true)->getSegment(1) == 'home' ? 'class="active"' : '' ?>>
@@ -163,7 +163,7 @@
     <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/Santristaff"><i class="fa fa-users"></i> <span>Santri Active </span></a>
     </li>
-    <li <?= current_url(true)->getSegment(3) == 'inactive' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/Santristaff/inactive"><i class="fa fa-user-alt-slash"></i> <span>Santri inActive</span></a>
     </li>
 

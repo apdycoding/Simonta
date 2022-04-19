@@ -93,4 +93,67 @@ class SantriModel extends Model
         $query = $builder->countAllResults();
         return $query;
     }
+
+    public function mhadits($id = null)
+    {
+        $builder = $this->builder();
+        $builder->join('mhadits', 'mhadits.santri_id = santri.santri_id');
+        if ($id != null) {
+            $builder->where('mhadits.santri_id', $id);
+        }
+        $builder->select('santri.santri_id,  mhadits.*');
+        $return = $builder->get();
+        return $return->getResultArray();
+    }
+
+    public function doa($id = null)
+    {
+        $builder = $this->builder();
+        $builder->join('doa', 'doa.santri_id = santri.santri_id');
+        if ($id != null) {
+            $builder->where('doa.santri_id', $id);
+        }
+        $builder->select('santri.santri_id, doa.*');
+        $return = $builder->get();
+        return $return->getResultArray();
+    }
+
+    public function hadits($id = null)
+    {
+        $builder = $this->builder();
+        $builder->join('hadits', 'hadits.santri_id = santri.santri_id');
+        // $builder->join('mdoa', 'mdoa.santri_id = santri.santri_id');
+        // $builder->join('surah', 'surah.santri_id = santri.santri_id');
+        if ($id != null) {
+            $builder->where('hadits.santri_id', $id);
+        }
+        $builder->select('santri.santri_id, hadits.*');
+        $return = $builder->get();
+        return $return->getResultArray();
+    }
+
+    public function mdoa($id = null)
+    {
+        $builder = $this->builder();
+        $builder->join('mdoa', 'mdoa.santri_id = santri.santri_id');
+        // $builder->join('surah', 'surah.santri_id = santri.santri_id');
+        if ($id != null) {
+            $builder->where('mdoa.santri_id', $id);
+        }
+        $builder->select('santri.santri_id, mdoa.*');
+        $return = $builder->get();
+        return $return->getResultArray();
+    }
+
+    public function surah($id = null)
+    {
+        $builder = $this->builder();
+        $builder->join('surah', 'surah.santri_id = santri.santri_id');
+        if ($id != null) {
+            $builder->where('surah.santri_id', $id);
+        }
+        $builder->select('santri.santri_id, surah.*');
+        $return = $builder->get();
+        return $return->getResultArray();
+    }
 }

@@ -236,17 +236,35 @@ class Santri extends BaseController
 
     public function trash($id)
     {
-        // cari gambar berdasarkan id
-        $imageSantri = $this->santriModel->find($id);
 
-        // cek jika file gambarnya default
-        if ($imageSantri['photos'] != 'default.png') {
-            // hapus gambar
-            unlink('img/' . $imageSantri['photos']);
+        $mhadits = $this->santriModel->mhadits($id);
+        $doa = $this->santriModel->doa($id);
+        $hadits = $this->santriModel->hadits($id);
+        $mdoa = $this->santriModel->mdoa($id);
+        $surah = $this->santriModel->surah($id);
+
+        // validati delete relation table
+        if ($mhadits || $doa || $hadits || $mdoa || $surah != null) {
+            // var_dump('ada data id');
+            echo "<script>
+            	alert('Maaf data tidak dapat dihapus karena digunakan di data yang lain');
+            	window.location='" . site_url('/santri') . "';
+            	</script>";
+        } else {
+
+            // cari gambar berdasarkan id
+            $imageSantri = $this->santriModel->find($id);
+            // dd($imageSantri);
+
+            // cek jika file gambarnya default
+            if ($imageSantri['photos'] != 'default.png') {
+                // hapus gambar
+                unlink('img/' . $imageSantri['photos']);
+            }
+
+            $this->santriModel->delete($id);
+            return redirect()->to('/santri')->with('error', 'Data santri ' . '<code>' . $imageSantri['name_santri'] . '</code>' . ' berhasil di hapus');
         }
-
-        $this->santriModel->delete($id);
-        return redirect()->to('/santri')->with('succes', 'Data santri berhasil di hapus');
     }
 
     public function edit($id)
