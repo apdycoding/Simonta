@@ -73,9 +73,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" class="float-right">
-                        <h4> Data santri active</h4>
+                        <h4> Data santri </h4>
+
                         <div class="card-header-action">
-                            <a href="/admin/ReportSantri" class="btn btn-info"><i class="fas fa-spinner"> Refresh</i>
+                            <a href="/admin/ReportSantri/export" class="btn btn-primary btn-sm">
+                                <i class="fas fa-file-download"></i> <span>Export excel</span>
+                            </a>
+
+                            <a href="/admin/ReportSantri" class="btn btn-info">
+                                <i class="fas fa-spinner"> Refresh</i>
                             </a>
                         </div>
                     </div>

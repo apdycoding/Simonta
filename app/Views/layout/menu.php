@@ -145,7 +145,7 @@
         <a class="nav-link" href="/home"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
     </li>
     <li <?= current_url(true)->getSegment(2) == 'profile' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/staff/profile"><i class="fas fa-fire"></i> <span>Profile</span></a>
+        <a class="nav-link" href="/staff/Profilestaff"><i class="fas fa-fire"></i> <span>Profile</span></a>
     </li>
 
     <!-- <li class="nav-item dropdown">
@@ -186,6 +186,12 @@
             <li><a class="nav-link" href=""><i class="fas fa-bookmark"> </i> Lap. hafalan</a></li>
         </ul>
     </li>
+
+    <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+        <a href="" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <i class="fas fa-info-circle"></i> <span>Sistem Monitoring V.1</span>
+        </a>
+    </div>
 
 <?php endif; ?>
 

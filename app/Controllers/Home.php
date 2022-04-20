@@ -38,6 +38,7 @@ class Home extends BaseController
             $doa = $this->DHaditsModel->get()->resultID->num_rows;
             $hadits = $this->DdoaModel->get()->resultID->num_rows;
             $penguji = $this->PengujiModel->get()->resultID->num_rows;
+
             $total = [
                 'totalDoa' => $doa,
                 'totalSantri' => $santri,
@@ -51,7 +52,25 @@ class Home extends BaseController
             // dd($data);
             return view('/admin/homeAdmin', $total);
         } elseif (session('roleUser') == 'staff') {
-            return view('/staff/homeStaff');
+
+            $santri = $this->SantriModel->SantriInActive();
+            $santriAc = $this->SantriModel->SantriActive();
+            $counthadits = $this->HaditsModel->countH();
+            $countDoa = $this->DoaModel->countdoa();
+            // dd($countdoa);
+            $doa = $this->DHaditsModel->get()->resultID->num_rows;
+            $hadits = $this->DdoaModel->get()->resultID->num_rows;
+
+            $data = [
+                'totalDoa' => $doa,
+                'totalSantri' => $santri,
+                'santrinon' => $santriAc,
+                'hadits' => $hadits,
+                'counthadits' => $counthadits,
+                'countdoa' => $countDoa,
+            ];
+
+            return view('/staff/homeStaff', $data);
         } elseif (session('roleUser') == 'kepsek') {
             return view('/home');
         } elseif (session('roleUser') == 'walisantri') {

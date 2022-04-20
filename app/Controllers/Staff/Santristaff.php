@@ -467,6 +467,9 @@ class Santristaff extends ResourceController
 
     public function delete($id = null)
     {
-        dd($id);
+        $name = $this->SantriModel->where('santri_id', $id)->first();
+        // dd($name);
+        $this->SantriModel->delete($id);
+        return redirect()->to('/staff/Santristaff')->with('error', 'Data santri ' . '<code>' . $name['name_santri'] . '</code>' . ' berhasil di hapus');
     }
 }

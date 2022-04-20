@@ -103,6 +103,10 @@ $routes->presenter('admin/Reportsurah', ['filter' => 'auth']);
 
 //export admin report hadits 
 $routes->get('/admin/ReportHadits/export', 'Admin\ReportHadits::export', ['filter' => 'auth']);
+// export doa
+$routes->get('/admin/Reportdoa/export', 'Admin\Reportdoa::export', ['filter' => 'auth']);
+// export santri
+$routes->get('/admin/ReportSantri/export', 'Admin\ReportSantri::export', ['filter' => 'auth']);
 
 $routes->resource('admin/ReportHadits', ['filter' => 'auth']);
 $routes->resource('admin/ReportSantri', ['filter' => 'auth']);
@@ -113,6 +117,7 @@ $routes->resource('admin/Reportdoa', ['filter' => 'auth']);
 $routes->presenter('staff/Santristaff', ['filter' => 'auth']);
 $routes->presenter('staff/guru', ['filter' => 'auth']);
 $routes->presenter('staff/Ksekolah', ['filter' => 'auth']);
+$routes->resource('staff/Profilestaff', ['filter' => 'auth']);
 
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);

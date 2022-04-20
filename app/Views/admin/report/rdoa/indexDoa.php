@@ -85,6 +85,9 @@
                             </div>
                             <div class="float-right ml-2">
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> </button>
+                                <a href="/admin/Reportdoa/export" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-file-download"></i> <span>Export excel</span>
+                                </a>
                             </div>
 
                         </form>

@@ -290,8 +290,8 @@
 
                     <div class="card-footer text-right">
                         <button type="submit" class="btn btn-primary btn-sm mr-1"> <i class="fa fa-check-circle" aria-hidden="true"></i> Updated</button>
-                        <a href="/santri/edit/<?= $santri['santri_id']; ?>" class="btn btn-info btn-sm"> <i class="fas fa-spinner" aria-hidden="true"></i> Reload</a>
-                        <a href="<?= site_url('santri') ?>" class="btn btn-warning btn-sm"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to santri</a>
+                        <a href="/staff/Santristaff/edit/<?= $santri['santri_id']; ?>" class="btn btn-info btn-sm"> <i class="fas fa-spinner" aria-hidden="true"></i> Reload</a>
+                        <a href="/staff/Santristaff" class="btn btn-warning btn-sm"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to santri</a>
                     </div>
 
                     </form>
