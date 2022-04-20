@@ -268,7 +268,7 @@ class Santri extends BaseController
             // var_dump('ada data id');
             echo "<script>
             	alert('Maaf data tidak dapat dihapus karena digunakan di data yang lain');
-            	window.location='" . site_url('/santri') . "';
+            	window.location='" . site_url('/santri/showData') . "';
             	</script>";
         } else {
 

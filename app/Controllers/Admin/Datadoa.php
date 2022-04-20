@@ -51,7 +51,7 @@ class Datadoa extends ResourceController
         $data = [
             'validation' => \Config\Services::validation(),
             'penguji' => $this->PengujiModel->getAll(),
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
         ];
         // dd($data);
         return view('admin/masterData/mdoa/newmdoa', $data);
@@ -103,7 +103,7 @@ class Datadoa extends ResourceController
             'editData'  => $this->MdoaModel->where('mdoa_id', $id)->first(),
             // 'getHadits'  => $this->MdoaModel->getSantriHadits($id),
             'penguji' => $this->PengujiModel->getAll(),
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
             'validation' => \Config\Services::validation(),
         ];
         // dd($data);

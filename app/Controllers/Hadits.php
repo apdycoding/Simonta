@@ -43,7 +43,7 @@ class Hadits extends ResourceController
     {
         $data = [
             'validation' => \Config\Services::validation(),
-            'names'      => $this->SantriModel->getName(),
+            'names'      => $this->SantriModel->showName(),
             // 'penguji'    => $this->PengujiModel->getAll(),
         ];
         return view('admin/hadits/newHadits', $data);
@@ -87,7 +87,7 @@ class Hadits extends ResourceController
     {
         $data = [
             'edit' => $this->HaditsModel->where('hadits_id', $id)->first(),
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
             // 'penguji'   => $this->PengujiModel->getAll(),
             'validation' => \Config\Services::validation(),
         ];

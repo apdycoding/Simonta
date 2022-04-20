@@ -49,7 +49,7 @@ class Datahadits extends ResourceController
     {
         $data = [
             'validation' => \Config\Services::validation(),
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
             'penguji' => $this->PengujiModel->getAll(),
         ];
         // dd($data);
@@ -107,7 +107,7 @@ class Datahadits extends ResourceController
         $data = [
             'editData'  => $this->MhaditsModel->where('Mhadits_id', $id)->first(),
             'getHadits'  => $this->MhaditsModel->getSantriHadits($id),
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
             'validation' => \Config\Services::validation(),
             'penguji' => $this->PengujiModel->getAll(),
         ];
@@ -144,10 +144,10 @@ class Datahadits extends ResourceController
 
         // ambil nama santri dengan join
         $idSantri = $this->request->getVar('santri_id');
-        $namaSantri = $this->MhaditsModel->getjoinsantri($idSantri);
-        // dd($namaSantri[0]['name_santri']);
 
         $this->MhaditsModel->update($mhadits_id, $data);
+        $namaSantri = $this->MhaditsModel->getjoinsantri($idSantri);
+        // dd($namaSantri[0]['name_santri']);
 
         return redirect()->to('/admin/Datahadits')->with('warning', 'Data hafalan hadits santri ' . '<code>' . $namaSantri[0]['name_santri'] . '</code>' . ' berhasil diubah ');
     }

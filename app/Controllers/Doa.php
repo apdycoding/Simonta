@@ -51,7 +51,7 @@ class Doa extends ResourceController
     {
         $data = [
             'validation' => \Config\Services::validation(),
-            'names' => $this->SantriModel->getName(),
+            'names' => $this->SantriModel->showName(),
             // 'penguji' => $this->PengujiModel->getAll(),
         ];
         return view('admin/doa/newDoa', $data);
@@ -107,7 +107,7 @@ class Doa extends ResourceController
     {
         $data = [
             'edit' => $this->DoaModel->where('doa_id', $id)->first(),
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
             // 'penguji'   => $this->PengujiModel->getAll(),
             'validation' => \Config\Services::validation(),
         ];

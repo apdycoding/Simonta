@@ -53,10 +53,9 @@ class HafalanSurah extends ResourcePresenter
      */
     public function new()
     {
-        // $data['names'] = $this->SantriModel->getName();
 
         $data = [
-            'names'     => $this->SantriModel->getName(),
+            'names'     => $this->SantriModel->showName(),
             'validation'    => \Config\Services::validation(),
             'penguji'      => $this->PengujiModel->getAll(),
         ];
@@ -123,7 +122,7 @@ class HafalanSurah extends ResourcePresenter
     public function edit($id = null)
     {
         $data = [
-            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->getName(),
+            'names' => $this->SantriModel->orderBy('name_santri', 'asc')->showName(),
             'edit'  => $this->surahModel->where('surah_id', $id)->first(),
             'penguji'   => $this->PengujiModel->getAll(),
             'validation' => \Config\Services::validation(),

@@ -75,6 +75,16 @@ class SantriModel extends Model
         return $query->getResultArray();
     }
 
+    public function showName($id = null)
+    {
+        // id untuk update 
+        // if ($id != null) {
+        //     return $this->where('santri_id', $id)->first();
+        // }
+        // jika tidak ada id
+        return $this->where('statusSantri', '1')->findAll();
+    }
+
     // total santri 
     // countAll menghitung seluruh baris 
     // dan countAllResult untuk menghitung berdasarkan baris where
