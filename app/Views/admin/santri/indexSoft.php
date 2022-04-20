@@ -8,10 +8,14 @@
 
 <section class="section">
     <div class="section-header">
+        <div class="section-header-back">
+            <a href="/santri" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
+        </div>
         <h1>Master Data</h1>
+
         <div class="section-header-button">
-            <a href="/santri/create" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add Santri</span>
-            </a>
+            <!-- <a href="/santri" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Back Santri</span>
+            </a> -->
         </div>
     </div>
 
@@ -65,9 +69,8 @@
                     <div class="card-header" class="float-right">
                         <h4> Data santri active</h4>
                         <div class="card-header-action">
-                            <a href="/santri" class="btn btn-info"><i class="fas fa-spinner"> Refresh</i>
-                            </a>
-                            <a href="/santri/showData" class="btn btn-danger"><i class="fa fa-trash"> Trash</i></a>
+                            <a href="/santri/showData" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
+                            <a href="/santri/restore" class="btn btn-primary"><i class="fa fa-check-square"> Restore All</i></a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -108,7 +111,7 @@
                                             </td>
                                             <td><?= ucwords($s['agama']) ?></td>
                                             <td>
-                                                <form action="/santri/status/<?= $s['santri_id']; ?>" method="POST" class="d-inline" onsubmit="return confirm('Apakan status santri akan di ubah?')">
+                                                <form>
                                                     <?= csrf_field(); ?>
 
                                                     <input type="hidden" name="_method" value="DELETE">
@@ -125,26 +128,16 @@
                                             </td>
                                             <td>
                                                 <center>
-                                                    <a href="/santri/<?= $s['santri_id']; ?>" class="btn btn-info btn-sm"><i class="fa fa-check-square"></i><span> Detail</span></a>
-                                                    <a href="/santri/edit/<?= $s['santri_id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
+                                                    <a href="/santri/restore/<?= $s['santri_id']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-check-square"></i><span> Restore</span></a>
 
-                                                    <form action="/santri/delete/<?= $s['santri_id']; ?>" method="POST" class="d-inline" onsubmit="return confirm('Apakan data akan dihapus?')">
+                                                    <form action="/santri/<?= $s['santri_id']; ?>" method="POST" class="d-inline" onsubmit="return confirm('Apakan data akan dihapus secara permanen?')">
                                                         <?= csrf_field(); ?>
 
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                                                            Delete
+                                                            Delete permanen
                                                         </button>
                                                     </form>
-
-                                                    <!-- <form action="/santri/<?= $s['santri_id']; ?>" method="POST" class="d-inline" onsubmit="return confirm('Apakan data akan dihapus?')">
-                                                        <?= csrf_field(); ?>
-
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                                                            Delete
-                                                        </button>
-                                                    </form> -->
 
                                                 </center>
                                             </td>

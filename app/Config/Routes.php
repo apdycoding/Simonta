@@ -44,6 +44,13 @@ $routes->get('/santri/(:num)', 'Santri::detail/$1', ['filter' => 'auth']);
 
 $routes->get('/santri/generate/(:num)', 'Santri::generate/$1', ['filter' => 'auth']);
 
+// soft delete santri
+$routes->delete('/santri/delete/(:num)', 'Santri::delete/$1', ['filter' => 'auth']);
+$routes->get('santri/showData', 'Santri::showData', ['filter' => 'auth']);
+$routes->get('santri/restore/(:any)', 'Santri::restore/$1', ['filter' => 'auth']);
+$routes->get('santri/restore', 'Santri::restore', ['filter' => 'auth']);
+
+
 // melihat softdelete guru
 $routes->get('teacher/showData', 'Teacher::showData', ['filter' => 'auth']);
 $routes->get('teacher/restore/(:any)', 'Teacher::restore/$1', ['filter' => 'auth']);

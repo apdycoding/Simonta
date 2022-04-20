@@ -6,6 +6,7 @@ use \App\Models\SantriModel;
 use \App\Models\SurahModel;
 use App\Models\PengujiModel;
 use App\Models\HaditsModel;
+use Google\Service\Classroom\TurnInStudentSubmissionRequest;
 
 class Santri extends BaseController
 {
@@ -234,6 +235,25 @@ class Santri extends BaseController
         return redirect()->to('santri')->with('succes', 'Data santri ' . '<code>' . $this->request->getVar('name_santri') . '</code>' . ' berhasil disimpan');
     }
 
+
+    // bagian softdelete
+
+    public function delete($id = null)
+    {
+        $status = $this->santriModel->where('santri_id', $id)->first();
+        // dd($status);
+        $this->santriModel->delete($id);
+        return redirect()->to('/santri')->with('error', 'Data santri ' . '<code>' . $status['name_santri'] . '</code>' . ' berhasil di hapus');
+    }
+
+    public function showData($id = null)
+    {
+        $data['santri'] = $this->santriModel->onlyDeleted()->getSantri();
+
+        return view('admin/santri/indexSoft', $data);
+    }
+
+    // trash untuk delete permanen
     public function trash($id)
     {
 
@@ -252,20 +272,63 @@ class Santri extends BaseController
             	</script>";
         } else {
 
-            // cari gambar berdasarkan id
-            $imageSantri = $this->santriModel->find($id);
-            // dd($imageSantri);
+            // query builder untuk mencari gambar dari table
+            $db = \Config\Database::connect();
+            $result = $db->table('santri')
+                ->where('santri_id', $id)
+                ->get()->getResultArray();
 
-            // cek jika file gambarnya default
-            if ($imageSantri['photos'] != 'default.png') {
-                // hapus gambar
-                unlink('img/' . $imageSantri['photos']);
+            $nameSantri = $result[0]['name_santri'];
+            $photos = $result[0]['photos'];
+
+            if ($photos != 'default.png') {
+                // bukan default maka hapus gambar
+                unlink('img/' . $photos);
             }
 
-            $this->santriModel->delete($id);
-            return redirect()->to('/santri')->with('error', 'Data santri ' . '<code>' . $imageSantri['name_santri'] . '</code>' . ' berhasil di hapus');
+            $this->santriModel->delete($id, true);
+            return redirect()->to('/santri/showData')->with('error', 'Data santri ' . '<code>' . $nameSantri . '</code>' . ' berhasil di hapus');
         }
     }
+
+    // restore satu persatu dan restore All
+    public function restore($id = null)
+    {
+        $db = \Config\Database::connect();
+        $result = $db->table('santri')
+            ->where('santri_id', $id)
+            ->get()->getResultArray();
+
+        // dd($name);
+
+        if ($id != null) {
+
+            $name = $result[0]['name_santri'];
+            // jika ada id restore satu persatu
+            $db->table('santri')
+                ->where('santri_id', $id)
+                ->set('deleted_at', null)
+                ->update();
+
+            if ($db->affectedRows() > 0) {
+                return redirect()->to('/santri/showData')->with('error', 'Data santri ' . '<code>' . $name . '</code>' . ' berhasil di hapus');
+            }
+        } else {
+            // jika tidak ada id maka restore All
+            $db->table('santri')
+                ->set('deleted_at', null, true)
+                ->where('deleted_at is NOT NULL', null, false)
+                ->update();
+
+            if ($db->affectedRows() > 0) {
+                return redirect()->to('/santri/showData')->with('succes', 'Semua data santri berhasil di restore');
+            }
+        }
+    }
+
+
+
+    // end softdelete
 
     public function edit($id)
     {
