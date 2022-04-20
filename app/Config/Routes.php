@@ -100,9 +100,13 @@ $routes->presenter('admin/Datahadits', ['filter' => 'auth']);
 
 // routes report
 $routes->presenter('admin/Reportsurah', ['filter' => 'auth']);
-$routes->presenter('admin/ReportHadits', ['filter' => 'auth']);
-$routes->presenter('admin/ReportSantri', ['filter' => 'auth']);
-$routes->presenter('admin/Reportdoa', ['filter' => 'auth']);
+
+//export admin report hadits 
+$routes->get('/admin/ReportHadits/export', 'Admin\ReportHadits::export', ['filter' => 'auth']);
+
+$routes->resource('admin/ReportHadits', ['filter' => 'auth']);
+$routes->resource('admin/ReportSantri', ['filter' => 'auth']);
+$routes->resource('admin/Reportdoa', ['filter' => 'auth']);
 
 
 // routes bagian staff || role staff

@@ -100,6 +100,7 @@ class SantriModel extends Model
     {
         $builder = $this->builder();
         $builder->like('statusSantri', '1');
+        $builder->where('deleted_at', null);
         $query = $builder->countAllResults();
         return $query;
     }
