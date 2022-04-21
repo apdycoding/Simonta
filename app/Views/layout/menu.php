@@ -188,11 +188,11 @@
         <a href="" class="nav-link has-dropdown"><i class="fa fa-database"></i><span>Data doa</span></a>
         <ul class="dropdown-menu">
 
-            <li <?= current_url(true)->getSegment(2) == 'Ddoa' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/admin/Ddoa"><i class="fa fa-book"></i> <span>Doa</span></a>
-            </li>
             <li <?= current_url(true)->getSegment(2) == 'Datadoa' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/admin/Datadoa"> <i class="fa fa-spinner"></i> <span> Data Hafalan Do'a </span> </a>
+                <a class="nav-link" href="/staff/Datadoa"><i class="fa fa-book"></i> <span>Doa</span></a>
+            </li>
+            <li <?= current_url(true)->getSegment(2) == 'Masterdoa' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Masterdoa"> <i class="fa fa-spinner"></i> <span> Data Hafalan Do'a </span> </a>
             </li>
         </ul>
     </li>

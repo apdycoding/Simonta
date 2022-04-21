@@ -118,11 +118,13 @@ $routes->presenter('staff/Santristaff', ['filter' => 'auth']);
 $routes->presenter('staff/guru', ['filter' => 'auth']);
 $routes->presenter('staff/Ksekolah', ['filter' => 'auth']);
 $routes->resource('staff/Profilestaff', ['filter' => 'auth']);
-$routes->resource('staff/Datahadits', ['filter' => 'auth']);
 
+$routes->resource('staff/Datahadits', ['filter' => 'auth']);
 // get getDataSantri
 $routes->post('staff/Masterhadits/getDataSantri', 'Staff\Masterhadits::getDataSantri', ['filter' => 'auth']);
 $routes->resource('staff/Masterhadits', ['filter' => 'auth']);
+
+$routes->resource('staff/Datadoa', ['filter' => 'auth']);
 
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);

@@ -6,11 +6,14 @@ use CodeIgniter\RESTful\ResourceController;
 
 class Profilestaff extends ResourceController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+
+    function __construct()
+    {
+        if (session()->roleUser != 'staff') {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Maaf page tidak ditemukan di page staff');
+        }
+    }
+
     public function index()
     {
         return view('staff/profile/profileStaff');
