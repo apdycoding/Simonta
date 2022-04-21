@@ -6,13 +6,15 @@
 
 <?= $this->section('content') ?>
 
+
 <section class="section">
     <div class="section-header">
         <h1>Master Data</h1>
-        <!-- <div class="section-header-button">
-            <a href="/admin/Datahadits/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add User</span>
+
+        <div class="section-header-button">
+            <a href="/staff/Masterhadits/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add master data</span>
             </a>
-        </div> -->
+        </div>
     </div>
 
     <?php if (session()->getFlashdata('succes')) : ?>
@@ -63,11 +65,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Data user si-monta</h4>
+                        <h4> Data Master <code> <?= session()->roleUser ?> </code></h4>
                         <div class="card-header-action">
-
-                            <a href="/admin/Datahadits" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
-
+                            <a href="/staff/Masterhadits" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
                         </div>
                     </div>
 
@@ -78,10 +78,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name santri</th>
-                                        <th>Name hadits</th>
-                                        <th>Predikat ujian</th>
-                                        <th>Tanggal ujian</th>
-                                        <th>Penguji</th>
+                                        <th>Jumlah hafalan hadits</th>
                                         <th>
                                             <center>
                                                 Action
@@ -98,23 +95,16 @@
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $value['name_santri']; ?></td>
-                                            <td><?= $value['nama_hadits']; ?></td>
-                                            <td><?= $value['predikat']; ?></td>
                                             <td>
-                                                <code><?= $value['htgl_ujian']; ?></code>
+                                                <code>
+                                                    <?= $value['count(*)']; ?>
+                                                    hadits
+                                                </code>
                                             </td>
-                                            <td><?= $value['nama_penguji']; ?></td>
                                             <td>
                                                 <center>
 
-                                                    <a href="/admin/Datahadits/edit/<?= $value['Mhadits_id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
-
-                                                    <form action="/admin/Datahadits/delete/<?= $value['Mhadits_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['Mhadits_id']; ?>">
-                                                        <?= csrf_field(); ?>
-                                                        <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data akan dihapus?" data-confirm-yes="submitDel(<?= $value['Mhadits_id']; ?>)"><i class="fa fa-trash"></i>
-                                                            Delete
-                                                        </button>
-                                                    </form>
+                                                    <a href="/staff/Masterhadits/<?= $value['santri_id'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i><span> Detail hafalan</span></a>
 
                                                 </center>
                                             </td>

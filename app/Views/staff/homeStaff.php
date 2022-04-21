@@ -54,13 +54,13 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-primary">
-                        <a href="/admin/Ddoa">
+                        <a href="/staff/Datahadits">
                             <i class="fas fa-folder-open"></i>
                         </a>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Data doa</h4>
+                            <h4>Data hadits</h4>
                         </div>
                         <div class="card-body">
                             <?= $totalDoa ?>
@@ -71,13 +71,13 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-warning">
-                        <a href="/admin/dhadits">
+                        <a href="">
                             <i class="fas fa-folder-open"></i>
                         </a>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Data hadits</h4>
+                            <h4>Data doa</h4>
                         </div>
                         <div class="card-body">
                             <?= $hadits ?>

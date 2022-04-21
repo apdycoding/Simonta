@@ -63,10 +63,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Data user si-monta</h4>
+                        <h4> Data Master <code><?= session()->roleUser ?></code> </h4>
                         <div class="card-header-action">
 
-                            <a href="/admin/Datahadits" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
+                            <a href="/staff/Masterhadits" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
 
                         </div>
                     </div>
@@ -107,10 +107,12 @@
                                             <td>
                                                 <center>
 
-                                                    <a href="/admin/Datahadits/edit/<?= $value['Mhadits_id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
+                                                    <a href="/staff/Masterhadits/<?= $value['Mhadits_id'] ?>/edit" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
 
-                                                    <form action="/admin/Datahadits/delete/<?= $value['Mhadits_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['Mhadits_id']; ?>">
+                                                    <form action="/staff/Masterhadits/<?= $value['Mhadits_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['Mhadits_id']; ?>">
                                                         <?= csrf_field(); ?>
+                                                        <input type="hidden" name="_method" value="DELETE">
+
                                                         <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data akan dihapus?" data-confirm-yes="submitDel(<?= $value['Mhadits_id']; ?>)"><i class="fa fa-trash"></i>
                                                             Delete
                                                         </button>
