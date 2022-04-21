@@ -9,7 +9,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h1>tes Data</h1>
+        <h1>Master Data</h1>
 
         <div class="section-header-button">
             <!-- <a href="/admin/Datahadits/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add master data</span>

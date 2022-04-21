@@ -170,21 +170,34 @@
     <!-- </ul>
 </li> -->
 
-    <li class="menu-header">Monitoring Anak</li>
-    <li class="nav-item dropdown <?= current_url(true)->getSegment(1) == 'teacher' ? 'class="active"' : '' ?>">
-        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Hafalan</span></a>
+    <li class="menu-header"> Data hafalan</li>
+    <li class="nav-item dropdown <?= current_url(true)->getSegment(2) == 'Datahadits' || current_url(true)->getSegment(2) == 'Masterhadits'  ? 'active' : '' ?>">
+        <a href="" class="nav-link has-dropdown"><i class="fa fa-database"></i><span>Data hadits</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href=""><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a></li>
-            <li><a class="nav-link" href=""> <i class="fa fa-book"></i> <span>Halafan Hadits</span> </a></li>
-            <li><a class="nav-link" href=""> <i class="fa fa-spinner"></i> <span>Hafalan Do'a </span> </a></li>
+
+            <li <?= current_url(true)->getSegment(2) == 'Datahadits' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Datahadits"><i class="fa fa-book"></i> <span>Hadits</span></a>
+            </li>
+            <li <?= current_url(true)->getSegment(2) == 'Masterhadits' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Masterhadits"> <i class="fa fa-book"></i> <span>Data hafalan hadits</span> </a>
+            </li>
         </ul>
     </li>
-    <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Laporan </span></a>
+
+    <li class="nav-item dropdown  <?= current_url(true)->getSegment(2) == 'Ddoa' || current_url(true)->getSegment(2) == 'Datadoa'  ? 'active' : '' ?>">
+        <a href="" class="nav-link has-dropdown"><i class="fa fa-database"></i><span>Data doa</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href=""> <i class="fas fa-file-archive"></i> Lap. data santri</a></li>
-            <li><a class="nav-link" href=""><i class="fas fa-bookmark"> </i> Lap. hafalan</a></li>
+
+            <li <?= current_url(true)->getSegment(2) == 'Ddoa' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/admin/Ddoa"><i class="fa fa-book"></i> <span>Doa</span></a>
+            </li>
+            <li <?= current_url(true)->getSegment(2) == 'Datadoa' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/admin/Datadoa"> <i class="fa fa-spinner"></i> <span> Data Hafalan Do'a </span> </a>
+            </li>
         </ul>
+    </li>
+    <li <?= current_url(true)->getSegment(1) == 'HafalanSurah' ? 'class="active"' : '' ?>>
+        <a class="nav-link" href="/HafalanSurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
     </li>
 
     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

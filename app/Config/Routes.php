@@ -118,6 +118,7 @@ $routes->presenter('staff/Santristaff', ['filter' => 'auth']);
 $routes->presenter('staff/guru', ['filter' => 'auth']);
 $routes->presenter('staff/Ksekolah', ['filter' => 'auth']);
 $routes->resource('staff/Profilestaff', ['filter' => 'auth']);
+$routes->resource('staff/Datahadits', ['filter' => 'auth']);
 
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);

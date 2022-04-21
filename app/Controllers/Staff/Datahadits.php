@@ -1,30 +1,24 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Staff;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\DHaditsModel;
-use CodeIgniter\Exceptions\PageNotFoundException;
 
-class DHadits extends ResourceController
+class Datahadits extends ResourceController
 {
-
     function __construct()
     {
         $this->DHaditsModel = new DHaditsModel();
-
-        if (session()->get('roleUser') != "adminsuper") {
-            return throw new \CodeIgniter\Exceptions\PageNotFoundException('Maaf halaman tidak ditemukan');
-            // return redirect()->to('/');
-            exit;
+        if (session()->roleUser != 'staff') {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Maaf page tidak ditemukan di page staff');
         }
     }
 
     public function index()
     {
-        // dd('ad');
         $data['dhadits'] = $this->DHaditsModel->orderBy('nama_hadits', 'asc')->findAll();
-        return view('admin/masterData/dhadits/indexDhadits', $data);
+        return view('staff/datahadits/indexDhadits', $data);
     }
 
     /**
@@ -47,27 +41,34 @@ class DHadits extends ResourceController
         $data = [
             'validation' => \Config\Services::validation(),
         ];
-        return view('admin/masterData/dhadits/newDhadits', $data);
+        return view('staff/datahadits/newDhadits', $data);
     }
 
-
+    /**
+     * Create a new resource object, from "posted" parameters
+     *
+     * @return mixed
+     */
     public function create()
     {
         if (!$this->validate([
             'nama_hadits'   => [
                 'rules' => 'required',
-                // 'errors'    => [
-                //     'required'  => 'Penguji ujian wajib diisi',
-                // ]
             ]
         ])) {
             return redirect()->back()->withInput();
         }
         $data = $this->request->getVar();
+        // dd($data);
         $this->DHaditsModel->Save($data);
-        return redirect()->to('/admin/dhadits')->with('succes', 'Data ' . '<code>' . $this->request->getVar('nama_hadits') . '</code>' . ' berhasil disimpan');
+        return redirect()->to('/staff/Datahadits')->with('succes', 'Data ' . '<code>' . $this->request->getVar('nama_hadits') . '</code>' . ' berhasil disimpan');
     }
 
+    /**
+     * Return the editable properties of a resource object
+     *
+     * @return mixed
+     */
     public function edit($id = null)
     {
         $data = [
@@ -78,7 +79,7 @@ class DHadits extends ResourceController
         if (empty($data['edit'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException();
         }
-        return view('admin/masterData/dhadits/editData', $data);
+        return view('staff/Datahadits/editData', $data);
     }
 
     /**
@@ -91,16 +92,13 @@ class DHadits extends ResourceController
         if (!$this->validate([
             'nama_hadits'   => [
                 'rules' => 'required',
-                // 'errors'    => [
-                //     'required'  => 'Penguji ujian wajib diisi',
-                // ]
             ]
         ])) {
             return redirect()->back()->withInput();
         }
         $data = $this->request->getVar();
         $this->DHaditsModel->update($id, $data);
-        return redirect()->to('/admin/dhadits')->with('warning', 'Data ' . '<code>' . $this->request->getVar('nama_hadits') . '</code>' . ' berhasil disimpan');
+        return redirect()->to('/staff/Datahadits')->with('warning', 'Data ' . '<code>' . $this->request->getVar('nama_hadits') . '</code>' . ' berhasil disimpan');
     }
 
     /**
@@ -110,9 +108,9 @@ class DHadits extends ResourceController
      */
     public function delete($id = null)
     {
-        $nama = $this->DHaditsModel->where('dhadits_id', $id)->first();
-        // dd($nama['nama_hadits']);
+        $name = $this->DHaditsModel->where('dhadits_id', $id)->first();
+        // dd($name);
         $this->DHaditsModel->delete($id);
-        return redirect()->to('/admin/dhadits')->with('error', 'Data ' . '<code>' . $nama['nama_hadits'] . '</code>' . ' berhasil dihapus');
+        return redirect()->to('/staff/Datahadits')->with('error', 'Data hadits ' . '<code>' . $name['nama_hadits'] . '</code>' . ' berhasil dihapus');
     }
 }
