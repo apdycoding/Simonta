@@ -6,13 +6,15 @@
 
 <?= $this->section('content') ?>
 
+
 <section class="section">
     <div class="section-header">
         <h1>Master Data</h1>
-        <!-- <div class="section-header-button">
-            <a href="/admin/Datahadits/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add User</span>
+
+        <div class="section-header-button">
+            <a href="/staff/Masterdoa/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add master data</span>
             </a>
-        </div> -->
+        </div>
     </div>
 
     <?php if (session()->getFlashdata('succes')) : ?>
@@ -63,11 +65,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Data user si-monta</h4>
+                        <h4> Data master si-monta</h4>
                         <div class="card-header-action">
-
-                            <a href="/admin/Datadoa" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
-
+                            <a href="/staff/Masterdoa" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
                         </div>
                     </div>
 
@@ -78,10 +78,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name santri</th>
-                                        <th>Name doa</th>
-                                        <th>predikat ujian</th>
-                                        <th>Tanggal Ujian</th>
-                                        <th>Penguji</th>
+                                        <th>Jumlah hafalan doa</th>
                                         <th>
                                             <center>
                                                 Action
@@ -98,23 +95,16 @@
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $value['name_santri']; ?></td>
-                                            <td><?= $value['nama_doa']; ?></td>
-                                            <td><?= $value['predikat']; ?></td>
                                             <td>
-                                                <code><?= $value['dtgl_ujian'] ?></code>
+                                                <code>
+                                                    <?= $value['count(*)']; ?>
+                                                    doa
+                                                </code>
                                             </td>
-                                            <td><?= $value['nama_penguji']; ?></td>
                                             <td>
                                                 <center>
 
-                                                    <a href="/admin/Datadoa/edit/<?= $value['mdoa_id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
-
-                                                    <form action="/admin/Datadoa/delete/<?= $value['mdoa_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['mdoa_id']; ?>">
-                                                        <?= csrf_field(); ?>
-                                                        <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data akan dihapus?" data-confirm-yes="submitDel(<?= $value['mdoa_id']; ?>)"><i class="fa fa-trash"></i>
-                                                            Delete
-                                                        </button>
-                                                    </form>
+                                                    <a href="/staff/Masterdoa/<?= $value['santri_id'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i><span> Detail hafalan</span></a>
 
                                                 </center>
                                             </td>

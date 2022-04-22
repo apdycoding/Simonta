@@ -6,6 +6,7 @@
 
 <?= $this->section('content') ?>
 
+
 <section class="section">
     <div class="section-header">
         <h1>Master Data</h1>
@@ -66,7 +67,7 @@
                         <h4> Data user si-monta</h4>
                         <div class="card-header-action">
 
-                            <a href="/admin/Datadoa" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
+                            <a href="/staff/Masterdoa" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
 
                         </div>
                     </div>
@@ -80,7 +81,7 @@
                                         <th>Name santri</th>
                                         <th>Name doa</th>
                                         <th>predikat ujian</th>
-                                        <th>Tanggal Ujian</th>
+                                        <th>Tanggal ujian</th>
                                         <th>Penguji</th>
                                         <th>
                                             <center>
@@ -101,16 +102,19 @@
                                             <td><?= $value['nama_doa']; ?></td>
                                             <td><?= $value['predikat']; ?></td>
                                             <td>
-                                                <code><?= $value['dtgl_ujian'] ?></code>
+                                                <code><?= $value['dtgl_ujian']; ?></code>
                                             </td>
                                             <td><?= $value['nama_penguji']; ?></td>
                                             <td>
                                                 <center>
 
-                                                    <a href="/admin/Datadoa/edit/<?= $value['mdoa_id'] ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
+                                                    <a href="/staff/Masterdoa/<?= $value['mdoa_id'] ?>/edit" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
 
-                                                    <form action="/admin/Datadoa/delete/<?= $value['mdoa_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['mdoa_id']; ?>">
+                                                    <form action="/staff/Masterdoa/<?= $value['mdoa_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['mdoa_id']; ?>">
                                                         <?= csrf_field(); ?>
+
+                                                        <input type="hidden" name="_method" value="DELETE">
+
                                                         <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data akan dihapus?" data-confirm-yes="submitDel(<?= $value['mdoa_id']; ?>)"><i class="fa fa-trash"></i>
                                                             Delete
                                                         </button>

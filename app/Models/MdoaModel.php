@@ -70,6 +70,23 @@ class MdoaModel extends Model
         return $query->getResultArray();
     }
 
+    public function getJoinId($id = null)
+    {
+        $builder = $this->builder();
+        $builder->join('santri', 'santri.santri_id = mdoa.santri_id ');
+        $builder->join('ddoa', 'ddoa.ddoa_id = mdoa.ddoa_id ');
+        $builder->join('penguji', 'penguji.penguji_id = mdoa.penguji_id ');
+
+        if ($id != null) {
+            $builder->where('mdoa.mdoa_id', $id);
+        }
+
+        $builder->select('mdoa.*,penguji.nama_penguji, santri.name_santri, ddoa.nama_doa');
+        $builder->orderBy('santri.name_santri', 'asc');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
     public function getDataNotIn($var = null)
     {
         $query = $this->db->query("SELECT * From ddoa where ddoa_id NOT IN 

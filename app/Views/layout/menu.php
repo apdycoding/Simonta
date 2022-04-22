@@ -184,7 +184,7 @@
         </ul>
     </li>
 
-    <li class="nav-item dropdown  <?= current_url(true)->getSegment(2) == 'Ddoa' || current_url(true)->getSegment(2) == 'Datadoa'  ? 'active' : '' ?>">
+    <li class="nav-item dropdown  <?= current_url(true)->getSegment(2) == 'Datadoa' || current_url(true)->getSegment(2) == 'Masterdoa'  ? 'active' : '' ?>">
         <a href="" class="nav-link has-dropdown"><i class="fa fa-database"></i><span>Data doa</span></a>
         <ul class="dropdown-menu">
 
