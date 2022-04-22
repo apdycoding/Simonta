@@ -197,7 +197,53 @@
         </ul>
     </li>
     <li <?= current_url(true)->getSegment(1) == 'HafalanSurah' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/HafalanSurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
+        <a class="nav-link" href="/staff/HafalanSurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
+    </li>
+
+    <li class="menu-header">Penguji</li>
+    <li <?= current_url(true)->getSegment(2) == 'Pengujis' ? 'class="active"' : '' ?>>
+        <a class="nav-link" href="/staff/Pengujis"><i class="fa fa-people-carry"></i> <span>Penguji</span></a>
+    </li>
+
+
+    <li class="menu-header">Monitoring Anak</li>
+    <li class="nav-item dropdown <?= current_url(true)->getSegment(1) == 'hadits' || current_url(true)->getSegment(1) == 'doa' || current_url(true)->getSegment(2) == 'Reportsurah'  ? 'active' : '' ?>">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-print"></i> <span> Cetak Hafalan</span></a>
+        <ul class="dropdown-menu">
+
+            <li <?= current_url(true)->getSegment(1) == 'hadits' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/hadits"> <i class="fas fa-print"></i> <span>Cetak Hadits</span> </a>
+            </li>
+
+            <li <?= current_url(true)->getSegment(1) == 'doa' || current_url(true)->getSegment(1) == 'doa'  ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/doa"> <i class="fas fa-print"></i> <span>Cetak Do'a </span> </a>
+            </li>
+
+            <li <?= current_url(true)->getSegment(2) == 'Reportsurah' ? 'class="active"' : null ?>>
+                <a class="nav-link" href=""><i class="fas fa-print"> </i> <span>Cetak Surah</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="nav-item dropdown <?= current_url(true)->getSegment(2) == 'ReportSantri' || current_url(true)->getSegment(2) == 'ReportHadits' || current_url(true)->getSegment(2) == 'Reportdoa' ? 'active' : '' ?>">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Laporan </span></a>
+        <ul class="dropdown-menu">
+
+            <!-- <li <?= current_url(true)->getSegment(2) == 'Reportsurah' ? 'class="active"' : null ?>>
+                <a class="nav-link" href="/admin/Reportsurah"><i class="fas fa-bookmark"> </i> Lap. Surah</a>
+            </li> -->
+
+            <li <?= current_url(true)->getSegment(2) == 'ReportSantri' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/admin/ReportSantri"> <i class="fas fa-file-archive"></i> Lap. data santri</a>
+            </li>
+            <li <?= current_url(true)->getSegment(2) == 'ReportHadits' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/admin/ReportHadits"><i class="fas fa-bookmark"> </i> Lap. hadits</a>
+            </li>
+
+            <li <?= current_url(true)->getSegment(2) == 'Reportdoa' ? 'class="active"' : null ?>>
+                <a class="nav-link" href="/admin/Reportdoa"><i class="fas fa-bookmark"> </i> Lap. doa</a>
+            </li>
+        </ul>
     </li>
 
     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

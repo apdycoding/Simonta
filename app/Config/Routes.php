@@ -127,6 +127,7 @@ $routes->resource('staff/Masterhadits', ['filter' => 'auth']);
 $routes->post('staff/Masterdoa/getDatadoa', 'Staff\Masterdoa::getDatadoa', ['filter' => 'auth']);
 $routes->resource('staff/Datadoa', ['filter' => 'auth']);
 $routes->resource('staff/Masterdoa', ['filter' => 'auth']);
+$routes->resource('staff/Pengujis', ['filter' => 'auth']);
 
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);

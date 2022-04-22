@@ -9,9 +9,9 @@
 <section class="section">
     <div class="section-header">
         <div class="section-header-back">
-            <a href="/penguji" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
+            <a href="/staff/Pengujis" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
         </div>
-        <h1>Create data hafalan</h1>
+        <h1>Update data penguji</h1>
     </div>
 
 
@@ -21,32 +21,37 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" class="float-right">
-                        <a href="/penguji/new">
-                            <h4> Input data Guru</h4>
-                        </a>
+                        <h4> Update data Guru</h4>
                     </div>
                     <div class="card-body">
 
-                        <form action="/penguji/create" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <form action="/staff/Pengujis/<?= $penguji['penguji_id']; ?>" method="post" autocomplete="off" enctype="multipart/form-data">
                             <?= csrf_field() ?>
+
+                            <input type="hidden" name="_method" value="PATCH">
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>Name Penguji<code>*</code></label>
-                                    <input type="text" name="nama_penguji" value="<?= old('nama_penguji') ?>" placeholder="nama penguji " class="form-control <?= $validation->hasError('nama_penguji') ? 'is-invalid' : '' ?>">
+                                    <label>Nama Penguji<code>*</code></label>
+                                    <input type="hidden" name="penguji_id" value="<?= $penguji['penguji_id']; ?>">
+
+                                    <input type="text" name="nama_penguji" value="<?= old('nama_penguji', $penguji['nama_penguji']) ?>" class="form-control <?= $validation->hasError('nama_penguji') ? 'is-invalid' : '' ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nama_penguji'); ?>
                                     </div>
                                 </div>
 
-
                                 <div class="form-group col-md-6">
                                     <label>Name surah<code>*</code></label>
 
                                     <select name="jk" class="form-control <?= $validation->hasError('jk') ? 'is-invalid' : '' ?>" id="">
-                                        <option value=""> - Pilih -</option>
-                                        <option value="L"> - Laki-laki -</option>
-                                        <option value="P"> - Perempuan -</option>
+
+                                        <?php if ($penguji['penguji_id'] != null) {
+                                            $gender = $penguji['jk'];
+                                        } ?>
+
+                                        <option value="L" <?= $gender == 'L' ? 'selected' : '' ?>> Laki-laki </option>
+                                        <option value="P" <?= $gender == 'P' ? 'selected' : '' ?>> Perempuan </option>
                                     </select>
 
                                     <div class="invalid-feedback">
@@ -57,8 +62,8 @@
 
 
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary mr-1"><i class="fa fa-paper-plane"></i> Save</button>
-                                <button type="reset" class="btn btn-secondary"> <i class="fa fa-eraser"></i> Reset</button>
+                                <a href="/penguji/edit/<?= $penguji['penguji_id'] ?>" class="btn btn-info"><i class="fa fa-spinner"></i> Reload</a>
+                                <button type="submit" class="btn btn-primary mr-1"><i class="fa fa-paper-plane"></i> Update</button>
                             </div>
                         </form>
                     </div>

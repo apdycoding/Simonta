@@ -6,15 +6,6 @@
 
 <?= $this->section('content') ?>
 
-<?php
-// dd($santri);
-?>
-
-<style>
-    /* img {
-        border-radius: 50%;
-    } */
-</style>
 
 <section class="section">
     <div class="section-header">
@@ -31,9 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" class="float-right">
-                        <a href="/HafalanSurah/new">
-                            <h4> Update data Guru</h4>
-                        </a>
+                        <h4> Update data Guru</h4>
                     </div>
                     <div class="card-body">
 

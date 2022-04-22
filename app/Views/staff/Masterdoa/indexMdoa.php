@@ -65,7 +65,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Data master si-monta</h4>
+                        <h4> Data master si-monta
+                            <code><?= session()->roleUser ?></code>
+                        </h4>
                         <div class="card-header-action">
                             <a href="/staff/Masterdoa" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
                         </div>

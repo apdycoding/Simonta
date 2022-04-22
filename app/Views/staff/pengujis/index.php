@@ -1,7 +1,7 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
-<title>Master Page &mdash; Simon</title>
+<title>Surah Page &mdash; Simon</title>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -10,13 +10,13 @@
 <section class="section">
     <div class="section-header">
         <h1>Master Data</h1>
-        <!-- <div class="section-header-button">
-            <a href="/admin/Datahadits/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add User</span>
+        <div class="section-header-button">
+            <a href="/staff/Pengujis/new" class="btn btn-primary"> <i class="fa fa-user-plus" aria-hidden="true"></i> <span>Add Penguji</span>
             </a>
-        </div> -->
+        </div>
     </div>
 
-    <?php if (session()->getFlashdata('succes')) : ?>
+    <?php if (session()->getFlashdata('success')) : ?>
 
         <div class="alert alert-success alert-dismissible show fade">
             <div class="alert-body">
@@ -24,7 +24,7 @@
                     x
                 </button>
                 <b>Success !</b>
-                <?= session()->getFlashdata('succes') ?>
+                <?= session()->getFlashdata('success') ?>
             </div>
         </div>
 
@@ -62,29 +62,34 @@
 
         <div class="row">
             <div class="col-12">
+                <!-- <div class="alert alert-info alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismis="alert">
+                            x
+                        </button>
+                        <code><b>Show data</b></code>
+                        <br>
+                        Data yang ditampilkan merupakan data hafalan berdasarkan <code>Nama santri</code>, untuk melihat daftar hafalan santri <code>silahkan klik lihat detail hafalan anak</code>
+                    </div>
+                </div> -->
                 <div class="card">
-                    <div class="card-header">
-                        <h4> Master Data si-monta
+                    <div class="card-header" class="float-right">
+                        <h4> Data penguji
                             <code><?= session()->roleUser ?></code>
                         </h4>
                         <div class="card-header-action">
-
-                            <a href="/staff/Masterdoa" class="btn btn-warning btn-sm"><i class="fa fa-chevron-circle-left"> back to data hafalan</i></a>
-
+                            <a href="/staff/Pengujis" class="btn btn-info"> <i class="fas fa-spinner"> Refresh</i>
+                            </a>
                         </div>
                     </div>
-
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-md" id="table-1">
+                            <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name santri</th>
-                                        <th>Name doa</th>
-                                        <th>predikat ujian</th>
-                                        <th>Tanggal ujian</th>
-                                        <th>Penguji</th>
+                                        <th>Nama Penguji</th>
+                                        <th>Jenis Kelamin</th>
                                         <th>
                                             <center>
                                                 Action
@@ -93,38 +98,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1;
-
-                                    foreach ($mdoa as $key => $value) :
-
+                                    <?php
+                                    $no = 1;
+                                    foreach ($penguji as $p) :
                                     ?>
                                         <tr>
-                                            <td><?= $no++ ?></td>
-                                            <td><?= $value['name_santri']; ?></td>
-                                            <td><?= $value['nama_doa']; ?></td>
-                                            <td><?= $value['predikat']; ?></td>
-                                            <td>
-                                                <code><?= $value['dtgl_ujian']; ?></code>
-                                            </td>
-                                            <td><?= $value['nama_penguji']; ?></td>
+                                            <td><?= $no++; ?>.</td>
+                                            <td><?= ucwords($p['nama_penguji']) ?></td>
+                                            <td><?= ($p['jk']) == 'L' ? 'Laki-laki' : 'Perempuan' ?> </td>
                                             <td>
                                                 <center>
 
-                                                    <a href="/staff/Masterdoa/<?= $value['mdoa_id'] ?>/edit" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
+                                                    <a href="/staff/Pengujis/<?= $p['penguji_id'] ?>/edit" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i><span> Edit</span></a>
 
-                                                    <form action="/staff/Masterdoa/<?= $value['mdoa_id']; ?>" method="POST" class="d-inline" id="del-<?= $value['mdoa_id']; ?>">
+                                                    <form action="/staff/Pengujis/<?= $p['penguji_id']; ?>" method="POST" class="d-inline" id="del-<?= $p['penguji_id']; ?>">
                                                         <?= csrf_field(); ?>
 
                                                         <input type="hidden" name="_method" value="DELETE">
 
-                                                        <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data akan dihapus?" data-confirm-yes="submitDel(<?= $value['mdoa_id']; ?>)"><i class="fa fa-trash"></i>
+                                                        <button class="btn btn-danger btn-sm" data-confirm="Hapus data?|apakah data akan dihapus?" data-confirm-yes="submitDel(<?= $p['penguji_id']; ?>)"><i class="fa fa-trash"></i>
                                                             Delete
                                                         </button>
                                                     </form>
-
                                                 </center>
                                             </td>
-
+                                            </td>
                                         </tr>
 
                                     <?php endforeach; ?>
@@ -138,5 +136,6 @@
 
     </div>
 </section>
+
 
 <?= $this->endSection() ?>

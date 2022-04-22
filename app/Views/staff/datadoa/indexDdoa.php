@@ -73,7 +73,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Data master hadits si-monta</h4>
+                        <h4> Data master doa
+                            <code><?= session()->roleUser ?></code>
+                        </h4>
                         <div class="card-header-action">
                             <a href="/staff/Datadoa" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
                         </div>

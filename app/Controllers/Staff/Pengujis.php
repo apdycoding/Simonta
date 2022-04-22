@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Staff;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\PengujiModel;
 
-class Penguji extends ResourceController
+
+class Pengujis extends ResourceController
 {
 
     function __construct()
     {
         $this->PengujiModel = new PengujiModel();
-
-        if (session()->get('roleUser') != "adminsuper") {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('maaf halaman tidak ditemukan');
+        if (session()->get('roleUser') != "staff") {
+            return throw new \CodeIgniter\Exceptions\PageNotFoundException('Maaf halaman tidak ditemukan');
             // return redirect()->to('/');
             exit;
         }
@@ -22,7 +22,7 @@ class Penguji extends ResourceController
     public function index()
     {
         $data['penguji'] = $this->PengujiModel->getall();
-        return view('admin/penguji/index', $data);
+        return view('staff/pengujis/index', $data);
     }
 
     /**
@@ -45,9 +45,14 @@ class Penguji extends ResourceController
         $data = [
             'validation'    => \Config\Services::validation(),
         ];
-        return view('admin/penguji/newPenguji', $data);
+        return view('staff/pengujis/newPenguji', $data);
     }
 
+    /**
+     * Create a new resource object, from "posted" parameters
+     *
+     * @return mixed
+     */
     public function create()
     {
         if (!$this->validate([
@@ -70,7 +75,7 @@ class Penguji extends ResourceController
 
         $data = $this->request->getVar();
         $this->PengujiModel->save($data);
-        return redirect()->to('/penguji')->with('success', 'Data penguji ' . '<code>' . $this->request->getVar('nama_penguji') . '</code>' . ' Berhasil disimpan');
+        return redirect()->to('/staff/Pengujis')->with('success', 'Data penguji ' . '<code>' . $this->request->getVar('nama_penguji') . '</code>' . ' Berhasil disimpan');
     }
 
     /**
@@ -87,7 +92,7 @@ class Penguji extends ResourceController
         if (empty($data['penguji'])) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
-        return view('admin/penguji/editPenguji', $data);
+        return view('staff/pengujis/editPenguji', $data);
     }
 
     public function update($id = null)
@@ -122,7 +127,7 @@ class Penguji extends ResourceController
         $data = $this->request->getVar();
         $this->PengujiModel->update($id, $data);
 
-        return redirect()->to('/penguji')->with('success', 'Update penguji ' . '<code>' . $this->request->getVar('nama_penguji') . '</code>' . ' berhasil di update');
+        return redirect()->to('/staff/Pengujis')->with('success', 'Update penguji ' . '<code>' . $this->request->getVar('nama_penguji') . '</code>' . ' berhasil di update');
     }
 
     /**
@@ -135,6 +140,6 @@ class Penguji extends ResourceController
         $data = $this->PengujiModel->where('penguji_id', $id)->first();
         // dd($data['nama_penguji']);
         $this->PengujiModel->delPenguji($id);
-        return redirect()->to('/penguji')->with('error', 'Data penguji ' . '<code>' . $data['nama_penguji'] . '</code>' . ' berhasil di hapus');
+        return redirect()->to('/staff/Pengujis')->with('error', 'Data penguji ' . '<code>' . $data['nama_penguji'] . '</code>' . ' berhasil di hapus');
     }
 }
