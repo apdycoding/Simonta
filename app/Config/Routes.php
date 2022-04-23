@@ -129,6 +129,11 @@ $routes->resource('staff/Datadoa', ['filter' => 'auth']);
 $routes->resource('staff/Masterdoa', ['filter' => 'auth']);
 $routes->resource('staff/Pengujis', ['filter' => 'auth']);
 
+// cetak serti surah bagian staff
+$routes->post('staff/Mastersurah/Eserti/(:num)', 'Staff\Mastersurah::Eserti/$1', ['filter' => 'auth']);
+$routes->get('staff/Mastersurah/details/(:num)', 'Staff\Mastersurah::details/$1', ['filter' => 'auth']);
+$routes->resource('staff/Mastersurah', ['filter' => 'auth']);
+
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);
 $routes->presenter('admin/Datadoa', ['filter' => 'auth']);

@@ -196,8 +196,8 @@
             </li>
         </ul>
     </li>
-    <li <?= current_url(true)->getSegment(1) == 'HafalanSurah' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/staff/HafalanSurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
+    <li <?= current_url(true)->getSegment(2) == 'Mastersurah' ? 'class="active"' : '' ?>>
+        <a class="nav-link" href="/staff/Mastersurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
     </li>
 
     <li class="menu-header">Penguji</li>
