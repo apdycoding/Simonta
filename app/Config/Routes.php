@@ -136,6 +136,8 @@ $routes->resource('staff/Mastersurah', ['filter' => 'auth']);
 
 $routes->post('staff/Cetakhadits/print/(:num)', 'staff\Cetakhadits::print/$1',  ['filter' => 'auth']);
 $routes->resource('staff/Cetakhadits', ['filter' => 'auth']);
+$routes->post('staff/Cetakdoa/serti/(:num)', 'Staff\Cetakdoa::serti/$1', ['filter' => 'auth']);
+$routes->resource('staff/Cetakdoa', ['filter' => 'auth']);
 
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);
