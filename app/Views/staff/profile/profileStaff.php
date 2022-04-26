@@ -24,6 +24,22 @@
         </p>
 
         <div class="col-12 col-md-12 col-lg-7">
+            <?php if (session()->getFlashdata('success')) : ?>
+
+                <div class="alert alert-success alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismis="alert">
+                            x
+                        </button>
+                        <b>Success !</b>
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-7">
             <div class="card">
                 <form method="post" class="needs-validation" novalidate="">
                     <div class="card-header">
@@ -69,6 +85,8 @@
                     </div>
                     <div class="card-footer text-right">
                         <a href="/home" class="btn btn-warning"><i class="fas fa-chevron-circle-left"></i> Back to Dashboard</a>
+
+                        <a href="/staff/Profilestaff/new" class="btn btn-primary"><i class="fas fa-key"></i> Change password</a>
                     </div>
                 </form>
             </div>
