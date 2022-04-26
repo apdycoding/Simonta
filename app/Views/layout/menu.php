@@ -224,7 +224,7 @@
         </ul>
     </li>
 
-    <li class="nav-item dropdown <?= current_url(true)->getSegment(2) == 'ReportSantri' || current_url(true)->getSegment(2) == 'ReportHadits' || current_url(true)->getSegment(2) == 'Reportdoa' ? 'active' : '' ?>">
+    <li class="nav-item dropdown <?= current_url(true)->getSegment(2) == 'Lapsantri' || current_url(true)->getSegment(2) == 'Laphadits' || current_url(true)->getSegment(2) == 'Lapdoa' ? 'active' : '' ?>">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Laporan </span></a>
         <ul class="dropdown-menu">
 
@@ -232,15 +232,15 @@
                 <a class="nav-link" href="/admin/Reportsurah"><i class="fas fa-bookmark"> </i> Lap. Surah</a>
             </li> -->
 
-            <li <?= current_url(true)->getSegment(2) == 'ReportSantri' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/admin/ReportSantri"> <i class="fas fa-file-archive"></i> Lap. data santri</a>
+            <li <?= current_url(true)->getSegment(2) == 'Lapsantri' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Lapsantri"> <i class="fas fa-file-archive"></i> Lap. data santri</a>
             </li>
-            <li <?= current_url(true)->getSegment(2) == 'ReportHadits' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/admin/ReportHadits"><i class="fas fa-bookmark"> </i> Lap. hadits</a>
+            <li <?= current_url(true)->getSegment(2) == 'Laphadits' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Laphadits"><i class="fas fa-bookmark"> </i> Lap. hadits</a>
             </li>
 
-            <li <?= current_url(true)->getSegment(2) == 'Reportdoa' ? 'class="active"' : null ?>>
-                <a class="nav-link" href="/admin/Reportdoa"><i class="fas fa-bookmark"> </i> Lap. doa</a>
+            <li <?= current_url(true)->getSegment(2) == 'Lapdoa' ? 'class="active"' : null ?>>
+                <a class="nav-link" href="/staff/Lapdoa"><i class="fas fa-bookmark"> </i> Lap. doa</a>
             </li>
         </ul>
     </li>
