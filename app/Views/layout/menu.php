@@ -205,22 +205,21 @@
         <a class="nav-link" href="/staff/Pengujis"><i class="fa fa-people-carry"></i> <span>Penguji</span></a>
     </li>
 
-
     <li class="menu-header">Monitoring Anak</li>
-    <li class="nav-item dropdown <?= current_url(true)->getSegment(1) == 'hadits' || current_url(true)->getSegment(1) == 'doa' || current_url(true)->getSegment(2) == 'Reportsurah'  ? 'active' : '' ?>">
+    <li class="nav-item dropdown <?= current_url(true)->getSegment(2) == 'Cetakhadits' ? 'active' : '' ?>">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-print"></i> <span> Cetak Hafalan</span></a>
         <ul class="dropdown-menu">
 
-            <li <?= current_url(true)->getSegment(1) == 'hadits' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/staff/hadits"> <i class="fas fa-print"></i> <span>Cetak Hadits</span> </a>
+            <li <?= current_url(true)->getSegment(2) == 'Cetakhadits' ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Cetakhadits"> <i class="fas fa-print"></i> <span>Cetak Hadits</span> </a>
             </li>
 
-            <li <?= current_url(true)->getSegment(1) == 'doa' || current_url(true)->getSegment(1) == 'doa'  ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/staff/doa"> <i class="fas fa-print"></i> <span>Cetak Do'a </span> </a>
+            <li <?= current_url(true)->getSegment(1) == 'Cetakdoa' || current_url(true)->getSegment(1) == 'doa'  ? 'class="active"' : '' ?>>
+                <a class="nav-link" href="/staff/Cetakdoa"> <i class="fas fa-print"></i> <span>Cetak Do'a </span> </a>
             </li>
 
-            <li <?= current_url(true)->getSegment(2) == 'Reportsurah' ? 'class="active"' : null ?>>
-                <a class="nav-link" href=""><i class="fas fa-print"> </i> <span>Cetak Surah</span></a>
+            <li <?= current_url(true)->getSegment(2) == 'CetakSurah' ? 'class="active"' : null ?>>
+                <a class="nav-link" href="/staff/CetakSurah"><i class="fas fa-print"> </i> <span>Cetak Surah</span></a>
             </li>
         </ul>
     </li>

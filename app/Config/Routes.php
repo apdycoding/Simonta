@@ -134,6 +134,9 @@ $routes->post('staff/Mastersurah/Eserti/(:num)', 'Staff\Mastersurah::Eserti/$1',
 $routes->get('staff/Mastersurah/details/(:num)', 'Staff\Mastersurah::details/$1', ['filter' => 'auth']);
 $routes->resource('staff/Mastersurah', ['filter' => 'auth']);
 
+$routes->post('staff/Cetakhadits/print/(:num)', 'staff\Cetakhadits::print/$1',  ['filter' => 'auth']);
+$routes->resource('staff/Cetakhadits', ['filter' => 'auth']);
+
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);
 $routes->presenter('admin/Datadoa', ['filter' => 'auth']);
@@ -141,7 +144,7 @@ $routes->presenter('admin/Datadoa', ['filter' => 'auth']);
 // bagian kepala sekolah
 $routes->presenter('kepsek', ['filter' => 'auth']);
 
-// bagian stff
+// bagian staff
 $routes->presenter('staff', ['filter' => 'auth']);
 
 
