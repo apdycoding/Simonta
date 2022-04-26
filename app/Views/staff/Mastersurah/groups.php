@@ -6,15 +6,6 @@
 
 <?= $this->section('content') ?>
 
-<?php
-// dd($santri);
-?>
-
-<style>
-    /* img {
-        border-radius: 50%;
-    } */
-</style>
 
 <section class="section">
     <div class="section-header">
@@ -144,7 +135,6 @@
                                                     </form>
 
                                                 </center>
-                                            </td>
                                             </td>
                                         </tr>
 
