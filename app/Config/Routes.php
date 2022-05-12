@@ -148,6 +148,16 @@ $routes->resource('kepsek/Profilekepsek', ['filter' => 'auth']);
 $routes->presenter('kepsek/HeadSchool', ['filter' => 'auth']);
 $routes->presenter('kepsek/Gurus', ['filter' => 'auth']);
 
+$routes->get('/kepsek/SantriA/inactive', 'Kepsek\SantriA::inactive', ['filter' => 'auth']);
+$routes->presenter('kepsek/SantriA', ['filter' => 'auth']);
+$routes->presenter('kepsek/Staff', ['filter' => 'auth']);
+$routes->resource('kepsek/Datahadits', ['filter' => 'auth']);
+$routes->resource('kepsek/Masterhadits', ['filter' => 'auth']);
+$routes->resource('kepsek/Datadoa', ['filter' => 'auth']);
+$routes->resource('kepsek/Masterdoa', ['filter' => 'auth']);
+$routes->resource('kepsek/Mastersurah', ['filter' => 'auth']);
+$routes->resource('kepsek/Pengujis', ['filter' => 'auth']);
+
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);
 $routes->presenter('admin/Datadoa', ['filter' => 'auth']);

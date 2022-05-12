@@ -277,11 +277,14 @@
     <li <?= current_url(true)->getSegment(2) == 'guru' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/Gurus"> <i class="fa fa-users"></i> <span>Guru</span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/staff/Santristaff"><i class="fa fa-users"></i> <span>Santri Active </span></a>
+    <li <?= current_url(true)->getSegment(2) == 'guru' ? 'class="active"' : '' ?>>
+        <a class="nav-link" href="/kepsek/Staff"> <i class="fa fa-user-secret"></i> <span>staff</span></a>
     </li>
     <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/staff/Santristaff/inactive"><i class="fa fa-user-alt-slash"></i> <span>Santri inActive</span></a>
+        <a class="nav-link" href="/kepsek/SantriA"><i class="fa fa-users"></i> <span>Santri Active </span></a>
+    </li>
+    <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
+        <a class="nav-link" href="/kepsek/SantriA/inactive"><i class="fa fa-user-alt-slash"></i> <span>Santri inActive</span></a>
     </li>
 
     <!-- </ul>
@@ -293,10 +296,10 @@
         <ul class="dropdown-menu">
 
             <li <?= current_url(true)->getSegment(2) == 'Datahadits' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/staff/Datahadits"><i class="fa fa-book"></i> <span>Hadits</span></a>
+                <a class="nav-link" href="/kepsek/Datahadits"><i class="fa fa-book"></i> <span>Hadits</span></a>
             </li>
             <li <?= current_url(true)->getSegment(2) == 'Masterhadits' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/staff/Masterhadits"> <i class="fa fa-book"></i> <span>Data hafalan hadits</span> </a>
+                <a class="nav-link" href="/kepsek/Masterhadits"> <i class="fa fa-book"></i> <span>Data hafalan hadits</span> </a>
             </li>
         </ul>
     </li>
@@ -306,20 +309,20 @@
         <ul class="dropdown-menu">
 
             <li <?= current_url(true)->getSegment(2) == 'Datadoa' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/staff/Datadoa"><i class="fa fa-book"></i> <span>Doa</span></a>
+                <a class="nav-link" href="/kepsek/Datadoa"><i class="fa fa-book"></i> <span>Doa</span></a>
             </li>
             <li <?= current_url(true)->getSegment(2) == 'Masterdoa' ? 'class="active"' : '' ?>>
-                <a class="nav-link" href="/staff/Masterdoa"> <i class="fa fa-spinner"></i> <span> Data Hafalan Do'a </span> </a>
+                <a class="nav-link" href="/kepsek/Masterdoa"> <i class="fa fa-spinner"></i> <span> Data Hafalan Do'a </span> </a>
             </li>
         </ul>
     </li>
     <li <?= current_url(true)->getSegment(2) == 'Mastersurah' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/staff/Mastersurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
+        <a class="nav-link" href="/kepsek/Mastersurah"><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a>
     </li>
 
     <li class="menu-header">Penguji</li>
     <li <?= current_url(true)->getSegment(2) == 'Pengujis' ? 'class="active"' : '' ?>>
-        <a class="nav-link" href="/staff/Pengujis"><i class="fa fa-people-carry"></i> <span>Penguji</span></a>
+        <a class="nav-link" href="/kepsek/Pengujis"><i class="fa fa-people-carry"></i> <span>Penguji</span></a>
     </li>
 
     <li class="menu-header">Monitoring Anak</li>
