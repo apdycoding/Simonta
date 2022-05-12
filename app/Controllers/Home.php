@@ -72,8 +72,28 @@ class Home extends BaseController
 
             return view('/staff/homeStaff', $data);
         } elseif (session('roleUser') == 'kepsek') {
-            return view('/home');
+
+            $santri = $this->SantriModel->SantriInActive();
+            $santriAc = $this->SantriModel->SantriActive();
+            $counthadits = $this->HaditsModel->countH();
+            $countDoa = $this->DoaModel->countdoa();
+            // dd($countdoa);
+            $doa = $this->DHaditsModel->get()->resultID->num_rows;
+            $hadits = $this->DdoaModel->get()->resultID->num_rows;
+
+            $data = [
+                'totalDoa' => $doa,
+                'totalSantri' => $santri,
+                'santrinon' => $santriAc,
+                'hadits' => $hadits,
+                'counthadits' => $counthadits,
+                'countdoa' => $countDoa,
+            ];
+
+            // 
+            return view('/kepsek/homeKepsek', $data);
         } elseif (session('roleUser') == 'walisantri') {
+            // 
             return view('/home');
         }
         return redirect()->to('/login');

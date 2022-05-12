@@ -10,7 +10,7 @@
 <section class="section">
     <div class="section-header">
         <div class="section-header-back">
-            <a href="/staff/Prfilestaff" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
+            <a href="/kepsek/Profilekepsek" class="btn btn-primary btn-sm"> <i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Create new user</h1>
     </div>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="/staff/Profilestaff/<?= session()->user_id ?>" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <form action="/kepsek/Profilekepsek/<?= session()->user_id ?>" method="post" autocomplete="off" enctype="multipart/form-data">
 
                             <?= csrf_field() ?>
 

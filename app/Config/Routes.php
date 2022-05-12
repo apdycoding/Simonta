@@ -143,6 +143,11 @@ $routes->resource('staff/Lapsantri', ['filter' => 'auth']);
 $routes->resource('staff/Laphadits', ['filter' => 'auth']);
 $routes->resource('staff/Lapdoa', ['filter' => 'auth']);
 
+// routes role kepsek
+$routes->resource('kepsek/Profilekepsek', ['filter' => 'auth']);
+$routes->presenter('kepsek/HeadSchool', ['filter' => 'auth']);
+$routes->presenter('kepsek/Gurus', ['filter' => 'auth']);
+
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);
 $routes->presenter('admin/Datadoa', ['filter' => 'auth']);
