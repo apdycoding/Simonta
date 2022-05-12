@@ -88,7 +88,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-danger">
-                        <a href="/doa">
+                        <a href="">
                             <i class="fas fa-newspaper"></i>
                         </a>
                     </div>
@@ -105,7 +105,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-info">
-                        <a href="/hadits">
+                        <a href="">
                             <i class="fas fa-newspaper"></i>
                         </a>
                     </div>

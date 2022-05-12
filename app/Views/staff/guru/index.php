@@ -63,7 +63,7 @@
                 <h4> Data guru si-monta <code> <?= session()->roleUser ?></code></h4>
                 <div class="card-header-action">
                     <a href="/staff/guru" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
-                    <a href="" class="btn btn-danger"><i class="fa fa-trash"> Trash</i></a>
+                    <!-- <a href="" class="btn btn-danger"><i class="fa fa-trash"> Trash</i></a> -->
                 </div>
             </div>
             <div class="card-body">

@@ -300,6 +300,8 @@ class Guru extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $Image = $this->model->where('teacher_id', $id)->first();
+        $this->model->delete($id);
+        return redirect()->to('/staff/guru')->with('error', 'Data guru ' . '<code>' . $Image['name'] . '</code>' . ' berhasil di hapus');
     }
 }
