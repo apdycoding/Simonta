@@ -261,7 +261,7 @@
     <li <?= current_url(true)->getSegment(1) == 'home' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/home"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'profile' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'Profilekepsek' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/Profilekepsek"><i class="fas fa-fire"></i> <span>Profile</span></a>
     </li>
 
@@ -271,19 +271,19 @@
     <ul class="dropdown-menu"> -->
     <li class="menu-header">Master Data <code> <?= session()->roleUser ?> </code></li>
 
-    <li <?= current_url(true)->getSegment(2) == 'Ksekolah' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'HeadSchool' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/HeadSchool"><i class="fa fa-user"></i> <span>Kep. Sekolah</span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'guru' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'Gurus' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/Gurus"> <i class="fa fa-users"></i> <span>Guru</span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'guru' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'Staff' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/Staff"> <i class="fa fa-user-secret"></i> <span>staff</span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'SantriA' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/SantriA"><i class="fa fa-users"></i> <span>Santri Active </span></a>
     </li>
-    <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
+    <li <?= current_url(true)->getSegment(2) == 'SantriA' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/kepsek/SantriA/inactive"><i class="fa fa-user-alt-slash"></i> <span>Santri inActive</span></a>
     </li>
 
@@ -325,7 +325,7 @@
         <a class="nav-link" href="/kepsek/Pengujis"><i class="fa fa-people-carry"></i> <span>Penguji</span></a>
     </li>
 
-    <li class="menu-header">Monitoring Anak</li>
+    <!-- <li class="menu-header">Monitoring Anak</li>
     <li class="nav-item dropdown <?= current_url(true)->getSegment(2) == 'Cetakhadits' || current_url(true)->getSegment(2) == 'Cetakdoa' || current_url(true)->getSegment(2) == 'Cetaksurah' ? 'active' : '' ?>">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-print"></i> <span> Cetak Hafalan</span></a>
         <ul class="dropdown-menu">
@@ -348,10 +348,6 @@
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Laporan </span></a>
         <ul class="dropdown-menu">
 
-            <!-- <li <?= current_url(true)->getSegment(2) == 'Reportsurah' ? 'class="active"' : null ?>>
-                <a class="nav-link" href="/admin/Reportsurah"><i class="fas fa-bookmark"> </i> Lap. Surah</a>
-            </li> -->
-
             <li <?= current_url(true)->getSegment(2) == 'Lapsantri' ? 'class="active"' : '' ?>>
                 <a class="nav-link" href="/staff/Lapsantri"> <i class="fas fa-file-archive"></i> Lap. data santri</a>
             </li>
@@ -363,7 +359,7 @@
                 <a class="nav-link" href="/staff/Lapdoa"><i class="fas fa-bookmark"> </i> Lap. doa</a>
             </li>
         </ul>
-    </li>
+    </li> -->
 
     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
         <a href="" class="btn btn-primary btn-lg btn-block btn-icon-split">
@@ -395,14 +391,15 @@
 <!-- menu wali santri -->
 <?php if (session('roleUser') == 'walisantri') : ?>
     <li class="menu-header">Monitoring Anak</li>
-    <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Hafalan</span></a>
-        <ul class="dropdown-menu">
-            <li><a class="nav-link" href=""><i class="fa fa-bookmark"></i> <span>Hafalan Surah</span> </a></li>
-            <li><a class="nav-link" href=""> <i class="fa fa-book"></i> <span>Halafan Hadits</span> </a></li>
-            <li><a class="nav-link" href=""> <i class="fa fa-spinner"></i> <span>Hafalan Do'a </span> </a></li>
-        </ul>
+    <li><a class="nav-link" href=""><i class="fas fa-search"></i> <span>Search Hadits</span> </a></li>
+    <li><a class="nav-link" href="/ws/hadits"><i class="fas fa-search"></i> <span>Search </span> </a></li>
     </li>
+
+    <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+        <a href="" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <i class="fas fa-info-circle"></i> <span>Sistem Monitoring V.1</span>
+        </a>
+    </div>
 
 
 

@@ -158,6 +158,8 @@ $routes->resource('kepsek/Masterdoa', ['filter' => 'auth']);
 $routes->resource('kepsek/Mastersurah', ['filter' => 'auth']);
 $routes->resource('kepsek/Pengujis', ['filter' => 'auth']);
 
+$routes->resource('ws/Hadits', ['filter' => 'auth']);
+
 // bagian dDoa
 $routes->presenter('admin/Ddoa', ['filter' => 'auth']);
 $routes->presenter('admin/Datadoa', ['filter' => 'auth']);

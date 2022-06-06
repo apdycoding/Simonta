@@ -105,18 +105,16 @@
                                             </td>
                                             <td><?= ucwords($s['agama']); ?></td>
                                             <td>
-                                                <form action="/staff/Santristaff/change/<?= $s['santri_id'] ?>" method="POST" class="d-inline" onsubmit="return confirm('Apakan status santri akan di ubah?')">
 
-                                                    <?= csrf_field(); ?>
+                                                <?= csrf_field(); ?>
 
-                                                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                                                    <?php if ($s['statusSantri'] == "1") {
-                                                        echo '<button class="btn btn-success btn-sm">' . 'Active';
-                                                    } else {
-                                                        echo '<button class="btn btn-danger btn-sm">' . 'Non active';
-                                                    } ?>
+                                                <!-- <input type="hidden" name="_method" value="DELETE"> -->
+                                                <?php if ($s['statusSantri'] == "1") {
+                                                    echo '<button class="btn btn-success btn-sm">' . 'Active';
+                                                } else {
+                                                    echo '<button class="btn btn-danger btn-sm">' . 'Non active';
+                                                } ?>
 
-                                                </form>
                                             </td>
                                             <td>
                                                 <img src="<?= site_url('img/' . $s['photos']) ?>" width="50px" alt="" srcset="">

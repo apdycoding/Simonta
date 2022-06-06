@@ -94,7 +94,7 @@ class Home extends BaseController
             return view('/kepsek/homeKepsek', $data);
         } elseif (session('roleUser') == 'walisantri') {
             // 
-            return view('/home');
+            return view('/ws/home');
         }
         return redirect()->to('/login');
     }
