@@ -21,7 +21,7 @@
                 </button>
                 <code><b>Search santri</b></code>
                 <br>
-                Silahkan cari nama santri
+                Silahkan cari hadits berdasarkan nama santri
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                     <div class="card-header">
                         <h4> Data staff </h4>
                         <div class="card-header-action">
-                            <a href="/home" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
+                            <a href="/ws/Hadits" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name Santri </th>
-                                        <th>Jumlah Hafalan</th>
+                                        <th>Jumlah Hafalan Hadits</th>
                                         <th>
                                             <center>
                                                 Action
@@ -65,12 +65,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>ad</td>
-                                        <td>ad</td>
-                                        <td>ad</td>
-                                        <td>ad</td>
-                                    </tr>
+
+                                    <?php
+
+                                    use App\Models\MhaditsModel;
+
+                                    $this->MhaditsModel = new MhaditsModel();
+
+                                    if (isset($_GET['keyword'])) {
+                                        $cari = $_GET['keyword'];
+                                        $data = $this->MhaditsModel->search(3, $cari);
+                                        $page = isset($_GET['page']) ?  $_GET['page'] :  1;
+
+                                        $no = 1 + (3 * ($page - 1));
+                                        foreach ($data['mhadits'] as $value) {
+                                    ?>
+
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $value['name_santri']; ?></td>
+                                                <td>
+                                                    <code>
+                                                        <?= $value['count(*)']; ?>
+                                                        hadits
+                                                    </code>
+                                                </td>
+                                                <td>
+                                                    <center>
+                                                        <a href="staff/Masterhadits/<?= $value['santri_id']; ?>" class="btn btn-warning btn-sm"> <i class="fas fa-eye"></i> Read</a>
+                                                    </center>
+                                                </td>
+                                            </tr>
+
+                                    <?php }
+                                    } ?>
                                 </tbody>
                             </table>
 

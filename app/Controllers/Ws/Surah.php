@@ -3,11 +3,8 @@
 namespace App\Controllers\Ws;
 
 use CodeIgniter\RESTful\ResourceController;
-use App\Models\MhaditsModel;
-use App\Models\SantriModel;
-use App\Models\PengujiModel;
 
-class Hadits extends ResourceController
+class Surah extends ResourceController
 {
     /**
      * Return an array of resource objects, themselves in array format
@@ -16,7 +13,7 @@ class Hadits extends ResourceController
      */
     public function index()
     {
-        return view('/ws/hadits');
+        return view('/ws/isurah');
     }
 
     /**

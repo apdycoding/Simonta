@@ -63,6 +63,28 @@ class SurahModel extends Model
         return $query->getResultArray();
     }
 
+    public function search($num, $keyword = null)
+    {
+        $builder = $this->builder();
+        // $builder->join('dhadits', 'dhadits.dhadits_id = surah.dhadits_id');
+        $builder->join('santri', 'santri.santri_id = surah.santri_id ');
+        $builder->select('surah.*, count(*), santri.name_santri');
+        // group dan hitung jumlah berapa hafalan santri
+        $builder->groupBy('surah.santri_id');
+        // $query = $builder->get();
+        // return $query->getResultArray();
+        // jika keyword tidak kosong
+        if ($keyword != null) {
+            $builder->like('name_santri', $keyword);
+            // $builder->orLike('santri.santri_id', $keyword);
+        }
+
+        return [
+            'msurah' => $this->paginate($num),
+            'pager' => $this->pager,
+        ];
+    }
+
     public function getGroup($id = null)
     {
         // dd($id);

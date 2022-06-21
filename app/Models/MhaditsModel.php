@@ -75,6 +75,29 @@ class MhaditsModel extends Model
         return $query->getResultArray();
     }
 
+
+    public function search($num, $keyword = null)
+    {
+        $builder = $this->builder();
+        $builder->join('dhadits', 'dhadits.dhadits_id = mhadits.dhadits_id');
+        $builder->join('santri', 'santri.santri_id = mhadits.santri_id ');
+        $builder->select('mhadits.*, dhadits.nama_hadits, count(*), santri.name_santri');
+        // group dan hitung jumlah berapa hafalan santri
+        $builder->groupBy('mhadits.santri_id');
+        // $query = $builder->get();
+        // return $query->getResultArray();
+        // jika keyword tidak kosong
+        if ($keyword != null) {
+            $builder->like('name_santri', $keyword);
+            // $builder->orLike('santri.santri_id', $keyword);
+        }
+
+        return [
+            'mhadits' => $this->paginate($num),
+            'pager' => $this->pager,
+        ];
+    }
+
     // untuk mengambil unique value
     public function tampil_data()
     {

@@ -25,61 +25,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4> Data staff </h4>
-                        <div class="card-header-action">
-                            <a href="/home" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
-                        </div>
-                    </div>
-
-                    <div class="card-header">
-                        <!-- jika kosong maka dikembalikan ke halaman index -->
-                        <form action="" method="GET" autocomplete="off">
-                            <?php $request = \Config\Services::request(); ?>
-                            <div class="float-left">
-                                <input type="text" name="keyword" value="<?= $request->getGet('keyword') ?>" class="form-control" width="155pt;" placeholder="keyword pencarian" id="">
-                            </div>
-                            <div class="float-right ml-2">
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> </button>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-md" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name Santri </th>
-                                        <th>Jumlah Hafalan</th>
-                                        <th>
-                                            <center>
-                                                Action
-                                            </center>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>ad</td>
-                                        <td>ad</td>
-                                        <td>ad</td>
-                                        <td>ad</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
