@@ -29,7 +29,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Data staff </h4>
+                        <h4> Data hadits </h4>
                         <div class="card-header-action">
                             <a href="/ws/Hadits" class="btn btn-info"><i class="fa fa-spinner"> Refresh</i></a>
                         </div>
@@ -92,7 +92,7 @@
                                                 </td>
                                                 <td>
                                                     <center>
-                                                        <a href="staff/Masterhadits/<?= $value['santri_id']; ?>" class="btn btn-warning btn-sm"> <i class="fas fa-eye"></i> Read</a>
+                                                        <a href="/ws/Hadits/<?= $value['santri_id'] ?>" class="btn btn-warning btn-sm"> <i class="fas fa-eye"></i> Read</a>
                                                     </center>
                                                 </td>
                                             </tr>

@@ -9,11 +9,12 @@ use App\Models\PengujiModel;
 
 class Hadits extends ResourceController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    function __construct()
+    {
+        // $this->PengujiModel = new PengujiModel();
+        // $this->SantriModel = new SantriModel();
+        $this->MhaditsModel = new MhaditsModel();
+    }
     public function index()
     {
         return view('/ws/hadits');
@@ -26,7 +27,11 @@ class Hadits extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $data = [
+            'mhadits' => $this->MhaditsModel->getjoinsantri($id),
+        ];
+        // dd($data);
+        return view('/ws/groupDataH', $data);
     }
 
     /**

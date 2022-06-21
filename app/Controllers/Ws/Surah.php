@@ -23,7 +23,7 @@ class Surah extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        dd('show');
     }
 
     /**
