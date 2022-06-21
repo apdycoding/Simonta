@@ -3,19 +3,19 @@
 namespace App\Controllers\Ws;
 
 use CodeIgniter\RESTful\ResourceController;
-use App\Models\SurahModel;
+use App\Models\MdoaModel;
 
-class Surah extends ResourceController
+class Doa extends ResourceController
 {
 
     function __construct()
     {
-        $this->surahModel = new SurahModel();
+        $this->MdoaModel = new MdoaModel();
     }
 
     public function index()
     {
-        return view('/ws/isurah');
+        return view('/ws/doai');
     }
 
     /**
@@ -25,13 +25,14 @@ class Surah extends ResourceController
      */
     public function show($id = null)
     {
-        $data['groups'] = $this->surahModel->getGroup($id);
-
-        if (empty($data['groups'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException("Error Processing Request");
+        $data = [
+            'mdoa' => $this->MdoaModel->getJoinMdoa($id),
+        ];
+        // dd($data);
+        if (empty($data['mdoa'])) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
-
-        return view('ws/groupDataS', $data);
+        return view('ws/groupDataD', $data);
     }
 
     /**

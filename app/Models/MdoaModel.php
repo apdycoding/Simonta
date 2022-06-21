@@ -53,6 +53,28 @@ class MdoaModel extends Model
         return $query->getResultArray();
     }
 
+    public function search($num, $keyword = null)
+    {
+        $builder = $this->builder();
+        $builder->join('ddoa', 'ddoa.ddoa_id = mdoa.ddoa_id');
+        $builder->join('santri', 'santri.santri_id = mdoa.santri_id ');
+        $builder->join('penguji', 'penguji.penguji_id = mdoa.penguji_id ');
+        $builder->select('mdoa.*,penguji.nama_penguji, ddoa.nama_doa, count(*), santri.name_santri');
+        // group dan hitung jumlah berapa hafalan santri
+        $builder->groupBy('mdoa.santri_id');
+        // $query = $builder->get();
+        // return $query->getResultArray();
+        if ($keyword != null) {
+            $builder->like('name_santri', $keyword);
+            // $builder->orLike('santri.santri_id', $keyword);
+        }
+
+        return [
+            'mhadits' => $this->paginate($num),
+            'pager' => $this->pager,
+        ];
+    }
+
     public function getJoinMdoa($id = null)
     {
         $builder = $this->builder();

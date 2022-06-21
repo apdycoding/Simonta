@@ -393,6 +393,7 @@
     <li class="menu-header">Monitoring Anak</li>
     <li><a class="nav-link" href="/ws/Hadits"><i class="fas fa-search"></i> <span>Search Hadits </span> </a></li>
     <li><a class="nav-link" href="/ws/Surah"><i class="fas fa-search"></i> <span>Search Surah</span> </a></li>
+    <li><a class="nav-link" href="/ws/Doa"><i class="fas fa-search"></i> <span>Search Doa</span> </a></li>
     </li>
 
     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
