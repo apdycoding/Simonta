@@ -160,6 +160,9 @@
     <li <?= current_url(true)->getSegment(2) == 'guru' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/guru"> <i class="fa fa-users"></i> <span>Guru</span></a>
     </li>
+    <li <?= current_url(true)->getSegment(2) == '' ? 'class="active"' : '' ?>>
+        <a class="nav-link" href="/staff/guru"> <i class="fa fa-users"></i> <span>Tahun Ajaran</span></a>
+    </li>
     <li <?= current_url(true)->getSegment(2) == 'Santristaff' ? 'class="active"' : '' ?>>
         <a class="nav-link" href="/staff/Santristaff"><i class="fa fa-users"></i> <span>Santri Active </span></a>
     </li>
