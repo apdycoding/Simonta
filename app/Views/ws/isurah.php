@@ -74,7 +74,7 @@
 
                                     if (isset($_GET['keyword'])) {
                                         $cari = $_GET['keyword'];
-                                        $data = $this->SurahModel->search(3, $cari);
+                                        $data = $this->SurahModel->search(10, $cari);
                                         // dd($data);
                                         $page = isset($_GET['page']) ?  $_GET['page'] :  1;
 

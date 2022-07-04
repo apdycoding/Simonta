@@ -74,7 +74,7 @@
 
                                     if (isset($_GET['keyword'])) {
                                         $cari = $_GET['keyword'];
-                                        $data = $this->MhaditsModel->search(3, $cari);
+                                        $data = $this->MhaditsModel->search(10, $cari);
                                         $page = isset($_GET['page']) ?  $_GET['page'] :  1;
 
                                         $no = 1 + (3 * ($page - 1));
